@@ -11,6 +11,8 @@ export default function ChatContainer({ currentChat, socket }) {
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const token = sessionStorage.getItem("token")
+  
+
 
   useEffect(async () => {
     const data = await JSON.parse(
@@ -27,6 +29,7 @@ export default function ChatContainer({ currentChat, socket }) {
         }
     });
     setMessages(response.data);
+
   }, [currentChat]);
 
   useEffect(() => {
@@ -66,6 +69,8 @@ export default function ChatContainer({ currentChat, socket }) {
     setMessages(msgs);
   };
 
+
+
   useEffect(() => {
     if (socket.current) {
       socket.current.on("msg-recieve", (msg) => {
@@ -81,6 +86,8 @@ export default function ChatContainer({ currentChat, socket }) {
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  
 
   return (
     <Container>
@@ -181,13 +188,13 @@ const Container = styled.div`
     .sended {
       justify-content: flex-end;
       .content {
-        background-color: #4f04ff21;
+        background-color: #6E2C00;
       }
     }
     .recieved {
       justify-content: flex-start;
       .content {
-        background-color: #9900ff20;
+        background-color: #229954;
       }
     }
   }
